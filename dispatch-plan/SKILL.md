@@ -1,11 +1,11 @@
 ---
 name: dispatch-plan
-description: Turn a finished plan (from grill-with-docs + plan mode) into self-contained per-todo briefs, group them into parallel/sequential lanes, and dispatch each lane to the right subagent. Use after finishing a grill-with-docs or plan-mode session, when the user has a .cursor/plans/*.plan.md with multiple todos and wants to run them async without losing decisions or starting blind chats.
+description: Turn a finished plan (from grill session, plan mode, any decision made on the chat, question and answers on the chat) into self-contained per-todo briefs, group them into parallel/sequential lanes, and dispatch each lane to the right subagent. Use after finishing a grill-with-docs or plan-mode session, when the user has a .cursor/plans/*.plan.md with multiple todos and wants to run them async without losing decisions or starting blind chats.
 ---
 
 # Dispatch Plan
 
-One skill, two modes, for the moment a `grill-with-docs` + plan-mode session ends with N todos and you don't want to (a) keep building in a heavy chat, or (b) start todos in fresh chats blindly and lose decisions.
+One skill, two modes, for the moment a `grill-me` + plan-mode session ends with N todos and you don't want to (a) keep building in a heavy chat, or (b) start todos in fresh chats blindly and lose decisions. the tasks can also come from /grill-me runs on agent mode, plan agent runs without /grill-me, any chat with questions asked by the agent and user made choices from the options given by the agent, any chat where some decisions are made.
 
 | Invocation | Mode | When |
 |---|---|---|
@@ -24,7 +24,7 @@ Run this in the chat where the plan was created — it is the only place that ho
 
 ### 1. Locate the plan
 
-Use the active plan if known. Otherwise glob `.cursor/plans/*.plan.md` and pick the most recently modified; if ambiguous, ask which one. Read its frontmatter `todos` and the full body (`## Decisions locked`, workstream sections, scope notes).
+Use the active plan if known. Otherwise glob '/plans/*.plan.md` and pick the most recently modified; if ambiguous, ask which one. Read its frontmatter `todos` and the full body (`## Decisions locked`, workstream sections, scope notes).
 
 ### 2. Harvest live knowledge
 
